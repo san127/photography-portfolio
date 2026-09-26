@@ -1,0 +1,307 @@
+/* ---------------------------------------------------------------------------
+   Design tokens - change these to re-theme the whole site.
+--------------------------------------------------------------------------- */
+:root {
+  /* Palette */
+  --wine: #6b2737;
+  --wine-deep: #4a1725;
+  --wine-soft: #8a3f4f;
+  --clay: #b5673f;
+  --cream: #f7f0e6;
+  --beige: #e8dccb;
+  --beige-deep: #ddccb2;
+  --ink: #2d2523;
+  --ink-soft: #756b67;
+  --white: #fffdf9;
+
+  --surface: var(--cream);
+  --surface-raised: var(--white);
+  --border: rgba(45, 37, 35, 0.12);
+  --shadow-soft: 0 18px 40px rgba(74, 23, 37, 0.1);
+
+  /* Type */
+  --font-heading: 'Barlow Condensed', 'Gill Sans MT Ext Condensed Bold', 'Gill Sans MT', 'Arial Narrow',
+    sans-serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Layout */
+  --max-width: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --radius-sm: 4px;
+  --radius-md: 10px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --fast: 180ms;
+  --medium: 340ms;
+  --slow: 560ms;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin: 0;
+  color: var(--wine-deep);
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--wine);
+  color: var(--cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Shared layout utilities
+--------------------------------------------------------------------------- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+}
+
+.eyebrow-label {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: var(--clay);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--slow) var(--ease), transform var(--slow) var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--fast) var(--ease), background var(--fast) var(--ease),
+    color var(--fast) var(--ease), border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--wine);
+  color: var(--cream);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--wine-deep);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--ink);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: rgba(150, 40, 40, 0.35);
+  color: #7a2626;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(150, 40, 40, 0.08);
+  border-color: #7a2626;
+}
+
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease), border-color var(--fast) var(--ease);
+}
+
+.icon-btn:hover {
+  background: var(--wine);
+  color: var(--cream);
+  border-color: var(--wine);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--ink);
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--wine);
+  box-shadow: 0 0 0 3px rgba(107, 39, 55, 0.12);
+}
+
+.field-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.error-text {
+  color: #8a2c2c;
+  font-size: 0.85rem;
+}
+
+.state-block {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.state-block h3 {
+  color: var(--wine-deep);
+  margin-bottom: 0.5rem;
+}
+
+.skeleton {
+  background: linear-gradient(100deg, var(--beige) 30%, var(--beige-deep) 45%, var(--beige) 60%);
+  background-size: 250% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -50% 0; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--beige-deep);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -1,0 +1,30 @@
+.hero {
+  padding: clamp(3.5rem, 10vw, 6rem) 0 clamp(2rem, 6vw, 3rem);
+  text-align: center;
+}
+
+.hero-eyebrow {
+  color: var(--clay);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  margin: 0.5rem 0 0.9rem;
+  color: var(--wine-deep);
+}
+
+.hero p {
+  color: var(--ink-soft);
+  max-width: 48ch;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.hero-rule {
+  width: 64px;
+  height: 2px;
+  background: var(--clay);
+  margin: 1.6rem auto 0;
+}

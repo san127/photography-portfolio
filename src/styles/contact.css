@@ -1,0 +1,72 @@
+.contact {
+  background: linear-gradient(165deg, var(--wine-deep), var(--wine) 65%);
+  color: var(--cream);
+  border-radius: var(--radius-md);
+  margin: 0 var(--gutter);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 6vw, 4rem);
+}
+
+.contact-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.contact-heading p.eyebrow-label {
+  color: rgba(247, 240, 230, 0.75);
+}
+
+.contact-heading h2 {
+  color: var(--cream);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin: 0.35rem 0 0.6rem;
+}
+
+.contact-heading p.contact-sub {
+  color: rgba(247, 240, 230, 0.8);
+  max-width: 44ch;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--cream);
+  font-size: 1.02rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(247, 240, 230, 0.18);
+  transition: opacity var(--fast) var(--ease);
+}
+
+.contact-link:hover {
+  opacity: 0.78;
+}
+
+.contact-link .icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(247, 240, 230, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.75rem 1rem 2.25rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
