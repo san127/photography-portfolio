@@ -1,5 +1,6 @@
+
 import { useEffect, useState } from 'react';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { site } from '../config/site.js';
 import { useScrollSpy } from '../hooks/useScrollSpy.js';
 import '../styles/navbar.css';
@@ -13,32 +14,65 @@ const LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
   const active = useScrollSpy(LINKS.map((l) => l.id));
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+    };
+
     onScroll();
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+
     return () => {
       document.body.style.overflow = '';
     };
   }, [open]);
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 800) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
   const go = (id) => (e) => {
     e.preventDefault();
+
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+    document.getElementById(id)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   };
 
   return (
     <header className={`navbar${scrolled ? ' is-scrolled' : ''}`}>
       <div className="container navbar-inner">
-        <a href="#top" className="navbar-brand" onClick={go('top')}>
+
+        <a
+          href="#top"
+          className="navbar-brand"
+          onClick={go('top')}
+        >
           {site.name}
           <span>{site.tagline}</span>
         </a>
@@ -60,18 +94,15 @@ export default function Navbar() {
         </nav>
 
         <div className="navbar-actions">
-          {/* <a href="/admin" className="icon-btn" aria-label="Admin login" title="Admin">
-            <ShieldCheck size={17} />
-          </a>
           <button
             type="button"
             className="navbar-toggle"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen((value) => !value)}
           >
-            {open ? <X size={26} /> : <Menu size={26} />}
-          </button> */}
+            {open ? <X size={23} /> : <Menu size={23} />}
+          </button>
         </div>
       </div>
 

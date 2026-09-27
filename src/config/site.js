@@ -6,7 +6,7 @@ export const site = {
   tagline: "Photography",
 
   // Contact
-  email: "saniyabhartu0415.com",
+  email: "saniyabhartu0415@gmail.com",
   phone: "+91 7719936663",
   phoneLink: "+917719936663", // digits only (with country code) for the tel: link
   location: "Goa, India",
