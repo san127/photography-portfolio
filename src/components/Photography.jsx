@@ -35,11 +35,11 @@ export default function Photography() {
   return (
     <section id="photography" className="section">
       <div className="container">
-        <div className="photography-header">
+        {/* <div className="photography-header">
           <p className="eyebrow-label">Photography</p>
           <h2>A collection, in progress</h2>
           <p>Organised by mood and light, rather than by date.</p>
-        </div>
+        </div> */}
 
         {status === 'loading' && (
           <>
