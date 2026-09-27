@@ -60,7 +60,7 @@ export default function Navbar() {
         </nav>
 
         <div className="navbar-actions">
-          <a href="/admin" className="icon-btn" aria-label="Admin login" title="Admin">
+          {/* <a href="/admin" className="icon-btn" aria-label="Admin login" title="Admin">
             <ShieldCheck size={17} />
           </a>
           <button
@@ -71,7 +71,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          </button> */}
         </div>
       </div>
 
